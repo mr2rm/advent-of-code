@@ -9,7 +9,7 @@ class HistorianHysteria {
     /**
      * Part 1: What is the total distance between lists?
      *
-     * Adhoc - Time: O(n) Space: O(1)
+     * Brute Force - Time: O(n) Space: O(1)
      *
      * @param leftColumn Left list
      * @param rightColumn Right list
@@ -30,7 +30,7 @@ class HistorianHysteria {
     /**
      * Part 2: What is their similarity score?
      *
-     * Hash Table - Time: O(n) Space: O(n)
+     * Hash Table, Brute Force - Time: O(n) Space: O(n)
      * 
      * @param leftColumn Left list
      * @param rightColumn Right list
