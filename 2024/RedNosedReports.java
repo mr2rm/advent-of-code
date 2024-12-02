@@ -7,53 +7,24 @@ import java.util.stream.Collectors;
 class RedNosedReports {
     /**
      * @param report Report
-     * @return Whether the report is increasing
-     */
-    static boolean isIncreasing(List<Integer> report) {
-        for (int i = 0; i < report.size() - 1; i++) {
-            if (report.get(i) >= report.get(i + 1)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * @param report Report
-     * @return Whether the report is decreasing
-     */
-    static boolean isDecreasing(List<Integer> report) {
-        for (int i = 0; i < report.size() - 1; i++) {
-            if (report.get(i) <= report.get(i + 1)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * @param report Report
-     * @return Whether the difference between each number is between 1 and 3
-     */
-    static boolean checkDifference(List<Integer> report) {
-        for (int i = 0; i < report.size() - 1; i++) {
-            int diff = Math.abs(report.get(i) - report.get(i + 1));
-            if (diff < 1 || diff > 3) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * @param report Report
      * @return Whether report is safe
      */
     static boolean isSafe(List<Integer> report) {
-        if (!isIncreasing(report) && !isDecreasing(report)) {
-            return false;
+        boolean isIncreasing = true, isDecreasing = true;
+        for (int i = 0; i < report.size() - 1; i++) {
+            int diff = report.get(i + 1) - report.get(i);
+            if (diff > 0) {
+                isDecreasing = false;
+            } else if (diff < 0) {
+                isIncreasing = false;
+            }
+
+            int absDiff = Math.abs(diff);
+            if (absDiff < 1 || absDiff > 3) {
+                return false;
+            }
         }
-        return checkDifference(report);
+        return isIncreasing || isDecreasing;
     }
 
     /**
