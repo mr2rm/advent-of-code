@@ -6,24 +6,54 @@ import java.util.stream.Collectors;
 
 class RedNosedReports {
     /**
-     * Check if report is safe
-     *
      * @param report Report
-     * @return Whether report is safe or not
+     * @return Whether the report is increasing
      */
-    static boolean isSafe(List<Integer> report) {
-        if (report.size() <= 1) {
-            return true;
-        }
-
-        boolean isIncreasing = report.get(1) > report.get(0);
-        for (int i = 1; i < report.size(); i++) {
-            int diff = report.get(i) - report.get(i - 1);
-            if (diff == 0 || Math.abs(diff) > 3 || (diff > 0) != isIncreasing) {
+    static boolean isIncreasing(List<Integer> report) {
+        for (int i = 0; i < report.size() - 1; i++) {
+            if (report.get(i) >= report.get(i + 1)) {
                 return false;
             }
         }
         return true;
+    }
+
+    /**
+     * @param report Report
+     * @return Whether the report is decreasing
+     */
+    static boolean isDecreasing(List<Integer> report) {
+        for (int i = 0; i < report.size() - 1; i++) {
+            if (report.get(i) <= report.get(i + 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * @param report Report
+     * @return Whether the difference between each number is between 1 and 3
+     */
+    static boolean checkDifference(List<Integer> report) {
+        for (int i = 0; i < report.size() - 1; i++) {
+            int diff = Math.abs(report.get(i) - report.get(i + 1));
+            if (diff < 1 || diff > 3) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * @param report Report
+     * @return Whether report is safe
+     */
+    static boolean isSafe(List<Integer> report) {
+        if (!isIncreasing(report) && !isDecreasing(report)) {
+            return false;
+        }
+        return checkDifference(report);
     }
 
     /**
