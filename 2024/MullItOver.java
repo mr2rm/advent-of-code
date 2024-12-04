@@ -44,8 +44,8 @@ class MullItOver {
     }
 
     public static void main(String[] args) throws IOException {
-        File input = new File("input.in");
-        final Scanner scanner = new Scanner(input);
+        File inputFile = new File("input.in");
+        final Scanner scanner = new Scanner(inputFile);
         StringBuilder builder = new StringBuilder();
 
         while (scanner.hasNextLine()) {
