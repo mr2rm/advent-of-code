@@ -5,9 +5,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class MullItOver {
-    static int multiply(String s) {
+    private static int multiply(String memory) {
         Pattern pattern = Pattern.compile("mul\\((\\d{1,3}),(\\d{1,3})\\)");
-        Matcher matcher = pattern.matcher(s);
+        Matcher matcher = pattern.matcher(memory);
 
         int result = 0;
         while (matcher.find()) {
@@ -18,14 +18,14 @@ class MullItOver {
         return result;
     }
 
-    static int multiplyEnabledInstructions(String s) {
+    private static int multiplyEnabledInstructions(String memory) {
         Pattern pattern = Pattern.compile("mul\\((\\d{1,3}),(\\d{1,3})\\)");
-        Matcher matcher = pattern.matcher(s);
+        Matcher matcher = pattern.matcher(memory);
 
         int result = 0;
         boolean enabled = true;
         while (matcher.find()) {
-            String firstPart = s.substring(0, matcher.start());
+            String firstPart = memory.substring(0, matcher.start());
             int lastDoIndex = firstPart.lastIndexOf("do()");
             int lastDontIndex = firstPart.lastIndexOf("don't()");
             if (lastDoIndex > lastDontIndex) {
@@ -55,10 +55,9 @@ class MullItOver {
         scanner.close();
 
         String memory = builder.toString();
-        int multiplyResult = multiply(memory);
-        int enabledMultiplyResult = multiplyEnabledInstructions(memory);
+        int part1 = multiply(memory);
+        int part2 = multiplyEnabledInstructions(memory);
 
-        System.out.println("Multiply Result: %d\nEnabled Multiply Result: %d"
-                .formatted(multiplyResult, enabledMultiplyResult));
+        System.out.println("Part 1: %d\nPart 2: %d".formatted(part1, part2));
     }
 }
