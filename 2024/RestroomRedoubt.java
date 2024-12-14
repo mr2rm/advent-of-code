@@ -23,9 +23,18 @@ public class RestroomRedoubt {
         return finalPosition;
     }
 
-    private static Pair getFinalPositionAfter100Seconds(Pair position, Pair velocity) {
-        int finalRow = getFinalDimension(position.a(), velocity.a(), 100, rowSize);
-        int finalCol = getFinalDimension(position.b(), velocity.b(), 100, colSize);
+    /**
+     * Get the final position of the robot after 100 seconds
+     *
+     * Brute Force - Time: O(1), Space: O(1)
+     * 
+     * @param position Position pair
+     * @param speed Speed pair
+     * @return Final position of the robot after 100 seconds
+     */
+    private static Pair getFinalPositionAfter100Seconds(Pair position, Pair speed) {
+        int finalRow = getFinalDimension(position.a(), speed.a(), 100, rowSize);
+        int finalCol = getFinalDimension(position.b(), speed.b(), 100, colSize);
         return new Pair(finalRow, finalCol);
     }
 
@@ -57,6 +66,14 @@ public class RestroomRedoubt {
         return quadrantCounter;
     }
 
+    /**
+     * What will the safety factor be after exactly 100 seconds have elapsed?
+     * 
+     * Brute Force - Time: O(n), Space: O(1)
+     * 
+     * @param positions Final positions of the robots
+     * @return Calculated Safety score
+     */
     private static int calculateSafetyFactor(List<Pair> positions) {
         int[] quadrantCounter = countEachQuadrant(positions);
         int safetyFactor = 1;
