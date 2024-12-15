@@ -7,3 +7,4 @@
 |    [Day 3: Mull It Over](https://adventofcode.com/2024/day/3)    |      String, Regex      |   2   |          |    [java](./MullItOver.java)     |  2/2   |
 |    [Day 4: Ceres Search](https://adventofcode.com/2024/day/4)    |     String, Matrix      |   3   |          |    [java](./CeresSearch.java)    |  1/2   |
 | [Day 14: Restroom Redoubt](https://adventofcode.com/2024/day/14) |     String, Matrix      |   3   |          |  [java](./RestroomRedoubt.java)  |  1/2   |
+|  [Day 15: Warehouse Woes](https://adventofcode.com/2024/day/15)  |   String, Matrix, DFS   |   4   |          |   [java](./WarehouseWoes.java)   |  1/2   |
